@@ -10,3 +10,7 @@
 * https://github.com/garora/TDD-Katas
 * http://codingdojo.org/
 * http://codekata.com/
+
+## Slajdy
+* [wersja iteraktywna](https://goo.gl/voi8fP)
+* [pdf](https://github.com/amkonarska/niezbednik-programisty-testy/blob/master/Niezbednik_programisty_Testy.pdf)
