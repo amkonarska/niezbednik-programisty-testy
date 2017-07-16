@@ -15,4 +15,13 @@ public class CalculatorTest {
         // to samo można zapisać używając wbudowanych assercji TestNG jako:
         // assertEquals(sum, 3);
     }
+
+    @Test
+    public void shouldDivideIntegers() {
+        Calculator calculator = new Calculator();
+
+        int divisionResult = calculator.divide(4, 2);
+
+        assertThat(divisionResult).isEqualTo(2);
+    }
 }
