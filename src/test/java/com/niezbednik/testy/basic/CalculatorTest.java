@@ -24,4 +24,11 @@ public class CalculatorTest {
 
         assertThat(divisionResult).isEqualTo(2);
     }
+
+    @Test(expectedExceptions = ArithmeticException.class)
+    public void shouldThrowArithmeticExceptionWhenDivingByZero() {
+        Calculator calculator = new Calculator();
+
+        calculator.divide(4, 0);
+    }
 }
