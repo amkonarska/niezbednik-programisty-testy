@@ -1,5 +1,6 @@
 package com.niezbednik.testy.basic;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -13,10 +14,16 @@ import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 public class CalculatorTest {
+
+    private Calculator calculator;
+
+    @BeforeMethod
+    public void initializeCalculator() {
+        calculator = new Calculator();
+    }
+
     @Test
     public void shouldAddIntegers() {
-        Calculator calculator = new Calculator();
-
         int sum = calculator.add(1, 2);
 
         assertThat(sum).isEqualTo(3);
@@ -26,8 +33,6 @@ public class CalculatorTest {
 
     @Test
     public void shouldDivideIntegers() {
-        Calculator calculator = new Calculator();
-
         int divisionResult = calculator.divide(4, 2);
 
         assertThat(divisionResult).isEqualTo(2);
@@ -35,15 +40,11 @@ public class CalculatorTest {
 
     @Test(expectedExceptions = ArithmeticException.class)
     public void shouldThrowArithmeticExceptionWhenDivingByZero() {
-        Calculator calculator = new Calculator();
-
         calculator.divide(4, 0);
     }
 
     @Test
     public void shouldReturnZeroForEmptyList() {
-        Calculator calculator = new Calculator();
-
         int sum = calculator.sumList(Collections.emptyList());
 
         assertThat(sum).isEqualTo(0);
@@ -51,7 +52,6 @@ public class CalculatorTest {
 
     @Test
     public void shouldSumListOfElements() {
-        Calculator calculator = new Calculator();
         List<Integer> values = Arrays.asList(1, 2, 3);
 
         int sum = calculator.sumList(values);
@@ -61,8 +61,6 @@ public class CalculatorTest {
 
     @Test
     public void shouldThrowExceptionWhenListIsNull() {
-        Calculator calculator = new Calculator();
-
         assertThatThrownBy(() -> calculator.sumList(null))
                 .isInstanceOf(NullPointerException.class)
                 .hasMessage("SumList require non null argument.");
@@ -70,15 +68,11 @@ public class CalculatorTest {
 
     @Test
     public void shouldReturnTrueForEvenNumber() {
-        Calculator calculator = new Calculator();
-
         assertTrue(calculator.isEven(2));
     }
 
     @Test
     public void shouldReturnFalseForEvenNumber() {
-        Calculator calculator = new Calculator();
-
         assertFalse(calculator.isEven(1));
     }
 
@@ -95,8 +89,6 @@ public class CalculatorTest {
 
     @Test(dataProvider = "numbersDataProvider")
     public void shouldFormatString(int input, String expectedResult) {
-        Calculator calculator = new Calculator();
-
         String formattedString = calculator.format(input);
 
         assertThat(formattedString).isEqualTo(expectedResult);
