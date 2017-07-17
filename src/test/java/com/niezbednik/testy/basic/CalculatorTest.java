@@ -2,6 +2,8 @@ package com.niezbednik.testy.basic;
 
 import org.testng.annotations.Test;
 
+import java.util.Collections;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CalculatorTest {
@@ -30,5 +32,14 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
 
         calculator.divide(4, 0);
+    }
+
+    @Test
+    public void shouldReturnZeroForEmptyList() {
+        Calculator calculator = new Calculator();
+
+        int sum = calculator.sumList(Collections.emptyList());
+
+        assertThat(sum).isEqualTo(0);
     }
 }
