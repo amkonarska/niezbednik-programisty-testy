@@ -8,6 +8,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 public class CalculatorTest {
@@ -71,5 +72,12 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
 
         assertTrue(calculator.isEven(2));
+    }
+
+    @Test
+    public void shouldReturnFalseForEvenNumber() {
+        Calculator calculator = new Calculator();
+
+        assertFalse(calculator.isEven(1));
     }
 }
