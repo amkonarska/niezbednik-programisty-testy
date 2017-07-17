@@ -8,6 +8,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.testng.Assert.assertTrue;
 
 public class CalculatorTest {
     @Test
@@ -59,10 +60,16 @@ public class CalculatorTest {
     @Test
     public void shouldThrowExceptionWhenListIsNull() {
         Calculator calculator = new Calculator();
-        
+
         assertThatThrownBy(() -> calculator.sumList(null))
                 .isInstanceOf(NullPointerException.class)
                 .hasMessage("SumList require non null argument.");
     }
 
+    @Test
+    public void shouldReturnTrueForEvenNumber() {
+        Calculator calculator = new Calculator();
+
+        assertTrue(calculator.isEven(2));
+    }
 }
