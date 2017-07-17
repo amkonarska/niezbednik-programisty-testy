@@ -4,6 +4,7 @@ import org.assertj.core.data.Offset;
 import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class BankAccountTest {
 
@@ -17,4 +18,14 @@ public class BankAccountTest {
         // to samo można zapisać używając wbudowanych assercji TestNG jako:
         // assertEquals(bankAccount.getBalance(), 8.12, 0.1);
     }
+
+    @Test
+    public void shouldThrowExceptionWhenWithdrawingMoreThanBalance() {
+        BankAccount bankAccount = new BankAccount(10.0);
+
+        assertThatThrownBy(() -> bankAccount.withdraw(100))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessageContaining("insufficient funds");
+    }
+
 }
