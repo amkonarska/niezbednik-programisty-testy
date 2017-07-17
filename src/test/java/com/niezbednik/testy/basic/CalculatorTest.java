@@ -1,5 +1,6 @@
 package com.niezbednik.testy.basic;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
@@ -79,5 +80,25 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
 
         assertFalse(calculator.isEven(1));
+    }
+
+    @DataProvider
+    public Object[][] numbersDataProvider() {
+        return new Object[][]{
+                {1, "1"},
+                {-1, "-1"},
+                {123, "123"},
+                {1_234, "1K 234"},
+                {1_234_567, "1M 234K 567"},
+        };
+    }
+
+    @Test(dataProvider = "numbersDataProvider")
+    public void shouldFormatString(int input, String expectedResult) {
+        Calculator calculator = new Calculator();
+
+        String formattedString = calculator.format(input);
+
+        assertThat(formattedString).isEqualTo(expectedResult);
     }
 }
