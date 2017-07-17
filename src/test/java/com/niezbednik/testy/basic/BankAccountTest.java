@@ -28,4 +28,13 @@ public class BankAccountTest {
                 .hasMessageContaining("insufficient funds");
     }
 
+
+    @Test
+    public void shouldIncreaseBalanceWhenDepositing() {
+        BankAccount bankAccount = new BankAccount(10.0);
+
+        bankAccount.deposit(20.0);
+
+        assertThat(bankAccount.getBalance()).isEqualTo(30, Offset.offset(0.1));
+    }
 }
