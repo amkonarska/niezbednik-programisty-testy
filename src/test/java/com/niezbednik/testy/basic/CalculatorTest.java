@@ -2,7 +2,9 @@ package com.niezbednik.testy.basic;
 
 import org.testng.annotations.Test;
 
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -41,5 +43,15 @@ public class CalculatorTest {
         int sum = calculator.sumList(Collections.emptyList());
 
         assertThat(sum).isEqualTo(0);
+    }
+
+    @Test
+    public void shouldSumListOfElements() {
+        Calculator calculator = new Calculator();
+        List<Integer> values = Arrays.asList(1, 2, 3);
+
+        int sum = calculator.sumList(values);
+
+        assertThat(sum).isEqualTo(6);
     }
 }
