@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CalculatorTest {
     @Test
@@ -54,4 +55,14 @@ public class CalculatorTest {
 
         assertThat(sum).isEqualTo(6);
     }
+
+    @Test
+    public void shouldThrowExceptionWhenListIsNull() {
+        Calculator calculator = new Calculator();
+        
+        assertThatThrownBy(() -> calculator.sumList(null))
+                .isInstanceOf(NullPointerException.class)
+                .hasMessage("SumList require non null argument.");
+    }
+
 }
