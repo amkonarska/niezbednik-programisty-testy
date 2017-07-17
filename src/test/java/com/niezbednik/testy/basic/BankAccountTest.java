@@ -37,4 +37,17 @@ public class BankAccountTest {
 
         assertThat(bankAccount.getBalance()).isEqualTo(30, Offset.offset(0.1));
     }
+
+    @Test
+    public void shouldReturnEmptyHistoryWhenNoTransactionWasMade() {
+        BankAccount bankAccount = new BankAccount(10.0);
+
+        assertThat(bankAccount.getHistory()).isEmpty();
+        // albo:
+        // assertThat(bankAccount.getHistory()).hasSize(0);
+        //
+        // to samo można zapisać używając wbudowanych assercji TestNG jako:
+        // assertTrue(bankAccount.getHistory().isEmpty());
+        // assertEquals(bankAccount.getHistory().size(), 0);
+    }
 }
