@@ -12,9 +12,8 @@ public class PrimeCheckerTest {
         assertTrue(checker.isPrime(2));
     }
 
-    // Nie działa dla 9 - dodajemy test, który odtwarza błąd
     @Test
-    public void shouldReturnTrueForNine() {
+    public void shouldReturnTrueForOddNumberSquare() {
         PrimeChecker checker = new PrimeChecker();
 
         assertTrue(checker.isPrime(9));

@@ -14,11 +14,9 @@ class PrimeChecker {
             return false;
         }
 
-        if (n == 9) {
-            return false;
-        }
-
-        for (int i = 3; i * i < n; i += 2) {
+        // oglądamy kod chcąc go zrefaktorować - widzimy, że problem dotyczy
+        // wszystkich kwadratów liczb nieparzystych
+        for (int i = 3; i * i <= n; i += 2) {
             if (n % i == 0) {
                 return false;
             }
