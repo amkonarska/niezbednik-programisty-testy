@@ -33,4 +33,13 @@ public class StringSumTest {
 
         assertThat(sum).isEqualTo("3");
     }
+
+    @Test
+    public void shouldReturnZeroWhenSummingTwoNotNaturalNumbers() {
+        StringSum sumator = new StringSum();
+
+        String sum = sumator.sum("1.1", "2.2");
+
+        assertThat(sum).isEqualTo("0");
+    }
 }
