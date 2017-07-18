@@ -1,5 +1,7 @@
 package com.niezbednik.testy.basic;
 
+import com.niezbednik.testy.basic.BankAccount.Transaction;
+import com.niezbednik.testy.basic.BankAccount.TransactionType;
 import org.assertj.core.data.Offset;
 import org.testng.annotations.Test;
 
@@ -49,5 +51,19 @@ public class BankAccountTest {
         // to samo można zapisać używając wbudowanych assercji TestNG jako:
         // assertTrue(bankAccount.getHistory().isEmpty());
         // assertEquals(bankAccount.getHistory().size(), 0);
+    }
+
+    @Test
+    public void shouldReturnTransactionsInOrder() {
+        //given
+        BankAccount bankAccount = new BankAccount(10.0);
+        Transaction depositTransaction = new Transaction(TransactionType.DEPOSIT, 10);
+        Transaction withdrawalTransaction = new Transaction(TransactionType.WITHDRAWAL, 5);
+
+        bankAccount.deposit(10);
+        bankAccount.withdraw(5);
+
+        assertThat(bankAccount.getHistory()).containsExactly(depositTransaction, withdrawalTransaction);
+
     }
 }

@@ -34,7 +34,7 @@ class BankAccount {
         return Collections.unmodifiableList(history);
     }
 
-    class Transaction {
+    static class Transaction {
         final TransactionType transactionType;
         final double amount;
 
