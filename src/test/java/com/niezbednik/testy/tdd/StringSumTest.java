@@ -25,4 +25,12 @@ public class StringSumTest {
         assertThat(sum).isEqualTo("0");
     }
 
+    @Test
+    public void shouldSumTwoSmallNaturalNumbers() {
+        StringSum sumator = new StringSum();
+
+        String sum = sumator.sum("1", "2");
+
+        assertThat(sum).isEqualTo("3");
+    }
 }
