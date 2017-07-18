@@ -1,6 +1,7 @@
 package com.niezbednik.testy.basic;
 
 import java.util.List;
+import java.util.Objects;
 
 class Calculator {
 
@@ -16,6 +17,8 @@ class Calculator {
     }
 
     int sumList(List<Integer> values) {
+        Objects.requireNonNull(values, "SumList require non null argument.");
+        
         int sum = 0;
         for (Integer value : values) {
             sum += value;
