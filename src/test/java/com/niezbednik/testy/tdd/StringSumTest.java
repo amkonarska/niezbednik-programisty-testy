@@ -1,5 +1,9 @@
 package com.niezbednik.testy.tdd;
 
+import org.testng.annotations.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class StringSumTest {
 // Napisz prostą klasę StringSum, która będzie miała jedną metodę o sygnaturze:
 // String sum(String number1, String number2)
@@ -12,5 +16,13 @@ public class StringSumTest {
 // 4. Zaimplementuj kod aby test przechodził
 // 5. Jeśli test przeszedł - zrefaktoruj kod
 
+    @Test
+    public void shouldReturnZeroForEmptyString() {
+        StringSum sumator = new StringSum();
+
+        String sum = sumator.sum("", "");
+
+        assertThat(sum).isEqualTo("0");
+    }
 
 }
